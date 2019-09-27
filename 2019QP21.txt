@@ -1,0 +1,36 @@
+
+  DECLARE NewString : STRING
+  DECLARE Index : INTEGER
+  DECLARE AfterSpace : BOOLEAN
+  DECLARE NextChar : CHAR
+  CONSTANT Space = ' '
+
+
+  AfterSpace= FALSE
+  NewString= ""
+
+
+  FOR Index= 1 TO LENGTH(InString)
+    NextChar= MID(InString, Index, 1)
+    IF AfterSpace = TRUE
+      THEN
+        IF NextChar <> Space
+          THEN
+            NewString= NewString & NextChar
+            AfterSpace= FALSE
+
+        ENDIF
+      ELSE
+       NewString= NewString & NextChar
+       IF NextChar = Space
+         THEN
+           AfterSpace TRUE
+
+       ENDIF
+     ENDIF
+   ENDFOR
+
+
+   RETURN NewString
+
+  ENDFUNCTION
